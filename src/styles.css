@@ -1,0 +1,323 @@
+/* Reset and global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    overflow-x: hidden;
+    margin-top: 2vw;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateX(-100%); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes popUp {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Global shadow */
+.shadow {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Styles */
+header {
+    width: 100%;
+    background-color: #1d4ed8;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.6s ease-out;
+}
+
+header h1 {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Container to wrap content */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+/* Button Styles */
+button {
+    background: linear-gradient(135deg, #4f46e5, #3b82f6);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 40px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #6366f1, #60a5fa);
+    transform: translateY(-3px);
+}
+
+button:active {
+    background: linear-gradient(135deg, #4338ca, #2563eb);
+    transform: translateY(1px);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.4);
+}
+
+/* Form Styles */
+form {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    max-width: 600px;
+    margin: 20px auto;
+    animation: fadeIn 0.8s ease-out;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 30px;
+    border: 2px solid #e5e7eb;
+    border-radius: 15px;
+    font-size: 18px;
+    background-color: #f9fafb;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus, form select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+}
+
+form button {
+    width: 100%;
+    padding: 15px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
+    border-radius: 15px;
+}
+
+form button:hover {
+    background: linear-gradient(135deg, #818cf8, #60a5fa);
+}
+
+/* Modal Styles */
+.Modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 60px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    max-width: 600px;
+    width: 90%;
+    animation: popUp 0.6s ease-out;
+}
+
+.Modal h2 {
+    margin-bottom: 35px;
+    font-size: 28px;
+    color: #1e40af;
+    text-align: center;
+}
+
+/* Calendar Styles */
+.FilterContainer {
+    margin-bottom: 35px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.FilterContainer select {
+    padding: 14px 25px;
+    border-radius: 50px;
+    border: 2px solid #e5e7eb;
+    font-size: 18px;
+    background-color: #f3f4f6;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.FilterContainer select:hover {
+    border-color: #6366f1;
+}
+
+.CalendarContainer {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 25px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    max-height: 700px;
+    animation: fadeIn 1s ease-out;
+}
+
+.Day {
+    position: relative;
+    padding: 30px;
+    background-color: #f9fafb;
+    border-radius: 20px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background-color 0.4s ease, transform 0.4s ease;
+}
+
+.Day:hover {
+    background-color: #e5e7eb;
+    transform: translateY(-5px);
+}
+
+.DayNumber {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+}
+option{
+    font-size: 12px;
+    font-weight: bold;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+}
+select{
+    font-size: 22px;
+    font-weight: bold;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+    margin-top: 1vw;
+    border-radius: 12px;
+}
+
+.Event {
+    background-color: #3b82f6;
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.Event:hover {
+    background-color: #2563eb;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .CalendarContainer {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+    }
+
+    .Day {
+        padding: 25px;
+        min-height: 150px;
+    }
+
+    .DayNumber {
+        font-size: 18px;
+    }
+
+    .Event {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .CalendarContainer {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .Day {
+        padding: 20px;
+        min-height: 130px;
+    }
+
+    .DayNumber {
+        font-size: 16px;
+    }
+
+    .Event {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .CalendarContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .Day {
+        padding: 15px;
+        min-height: 110px;
+    }
+
+    .DayNumber {
+        font-size: 14px;
+    }
+
+    .Event {
+        font-size: 11px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 12px 25px;
+    }
+
+    form {
+        padding: 30px;
+    }
+}

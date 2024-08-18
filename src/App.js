@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { EventProvider } from './context/EventContext';
+import Calendar from './components/Calendar';
+import EventForm from './components/EventForm';
+import EventModal from './components/EventModal';
+import './styles.css';
 
-function App() {
+
+const App = () => {
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const handleSelectEvent = (event) => {
+    setSelectedEvent(event);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedEvent(null);
+  };
+
+  const handleOpenForm = () => {
+    setIsFormOpen(true);
+  };
+
+  const handleCloseForm = () => {
+    setIsFormOpen(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <EventProvider>
+      <button onClick={handleOpenForm}>Add New Event</button>
+      {isFormOpen && <EventForm onClose={handleCloseForm} />}
+      <Calendar onSelectEvent={handleSelectEvent} />
+      {selectedEvent && <EventModal event={selectedEvent} onClose={handleCloseModal} />}
+    </EventProvider>
   );
-}
+};
 
 export default App;
